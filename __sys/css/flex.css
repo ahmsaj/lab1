@@ -1,0 +1,33 @@
+/****Flex****/
+.fx{display: flex;}
+.fx-1{flex:1;}.fx-2{flex:2;}.fx-3{flex:3;}.fx-4{flex:4;}.fx-5{flex:5;}.fx-6{flex:6;}.fx-7{flex:7;}.fx-8{flex:8;}.fx-9{flex:9;}.fx-10{flex:10;}.fx-11{flex:11;}.fx-12{flex:12;}
+/****Order****/
+.fx-ord-1{order:1;}.fx-ord-2{order:2;}.fx-ord-3{order:3;}.fx-ord-4{order:4;}.fx-ord-5{order:5;}.fx-ord-6{order:6;}.fx-ord-7{order:7;}.fx-ord-8{order:8;}.fx-ord-9{order:9;}.fx-ord-10{order:10;}.fx-ord-11{order:11;}.fx-ord-12{order:12;}
+/****Justify****/
+.fx-js-s{justify-content: flex-start}
+.fx-js-c{justify-content: center;}
+.fx-js-sb{justify-content: space-between;}
+.fx-js-sa{justify-content: space-around;}
+.fx-js-e{justify-content: flex-end} 
+.fx-dir-col{flex-direction: column;}
+.fx-dir-row{flex-direction: row;}
+.fx-dir-rev{flex-direction: row-reverse;}
+.fx-rap{flex-wrap:wrap} 
+
+.cc{margin: auto;}
+.fx-gap5{gap: 5px;}
+.fx-gap10{gap: 10px;}
+.fx-gap20{gap: 20px;}
+
+/**************Grid*****************/
+.fxg{display:grid;}
+/****Align****/
+.fxg-al-s{align-items: flex-start}
+.fxg-al-ss{align-items: self-start}
+.fxg-al-c{align-items: center;}
+.fxg-al-e{align-items: flex-end}
+.fxg-als-s{align-self: flex-start}
+.fxg-als-c{align-self: center;}
+.fxg-als-e{align-self: flex-end}
+.fxg-al-st{align-content: stretch;}
+/******************************************/

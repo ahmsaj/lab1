@@ -1,0 +1,208 @@
+RewriteEngine on
+options -Indexes
+RewriteBase /mh8
+#ErrorDocument 404 /mh/__sys/mods/p404.php?root=2
+#------------------------------------------------
+RewriteRule ^fix$ fix.php [L]
+RewriteRule ^fix/([0-9]+)$ fix.php?o=$1 [L]
+RewriteRule ^fix/([0-9]+)-([0-9]+)$ fix.php?o=$1&n=$2 [L]
+
+#---index----------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/$ __sys/mods/index.php?lg=$1&root=2 [L]
+RewriteRule ^$ __sys/mods/index.php?root=2 [L]
+RewriteRule ^([a-z]{2})/_$ __sys/prcds/log.php?lg=$1&root=2 [L]
+#---protect----------------------------------------------------------------------------
+
+RewriteRule ^__sys/mods/$ __sys/mods/p404.php [L]
+RewriteRule ^__sys/prcds/$ __sys/mods/p404.php [L]
+#RewriteRule ^__sys/prcds/(.*)$ __sys/mods/p404.php [L]
+RewriteRule ^__sys/css/$ __sys/mods/p404.php [L]
+RewriteRule ^__sys/lang/$ __sys/mods/p404.php [L]
+RewriteRule ^__sys/$ __sys/mods/p404.php [L]
+
+#RewriteRule ^__sys/(.*)/$ __sys/mods/p404.php [L]
+
+RewriteRule ^_([a-z]{3})/$ __sys/mods/p404.php [L]
+RewriteRule ^_([a-z]{3})/(.*)/$ __sys/mods/p404.php [L]
+
+#RewriteRule ^addons/(.*)$ __sys/mods/p404.php [L]
+#RewriteRule ^addons/(.*)/$ __sys/mods/p404.php [L]
+
+#RewriteRule ^__main/(.*)$ __sys/mods/p404.php [L]
+#RewriteRule ^__main/(.*)/$ __sys/mods/p404.php [L]
+
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+
+
+#---API----------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/API.json$ _api/prcds/json.php?lg=$1&root=2 [L]
+#---images----------------------------------------------------------------------------
+RewriteRule ^im/(.*)$ images/$1 [L]
+#RewriteRule ^up/(.*)$ uploads/$1 [L]
+#RewriteRule ^reup/(.*)$ uploads/resize/$1 [L]
+RewriteRule ^upi/(.*)$ sData/$1 [L]
+RewriteRule ^imup/(.*)$ sData/resize/$1 [L]
+RewriteRule ^([a-z]{2})/bc/([^/]+)$ library/bcode/html/image.php?lg=$1&text=$2
+#-------------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/M/(.*)$ __super/prcds/$2?lg=$1&root=2 [L]
+RewriteRule ^([a-z]{2})/S/sys_(.*)$ __sys/prcds/$2?lg=$1&root=2 [L]
+RewriteRule ^([a-z]{2})/N/man_(.*)$ __main/prcds/$2?lg=$1&root=2 [L]
+RewriteRule ^([a-z]{2})/X/([a-z]{3})_(.*)$ _$2/prcds/$3?lg=$1&root=2 [L]
+
+RewriteRule ^([a-z]{2})/Add.(.*)$ addons/$2?lg=$1&root=2 [L]
+#---login----------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/Login(.*)-([a-zA-Z0-9-]+)$ __sys/mods/login.php?lg=$1&PER_ID=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/Login(.*)$ __sys/mods/login.php?lg=$1&root=2 [L]
+RewriteRule ^Login(.*)$ __sys/mods/login.php?root=2 [L]
+
+RewriteRule ^([a-z]{2})/Login$ __sys/mods/login.php?lg=$1&root=2 [L]
+RewriteRule ^([a-z]{2})/Logout$ __sys/mods/login.php?out&lg=$1&root=2 [L]
+#----PRINT-------------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/Print-([a-z]{3})/T([0-9]+)-([0-9]+)$ _$2/prcds/_print.php?lg=$1&type=$3&id=$4&root=2 [L]
+RewriteRule ^([a-z]{2})/Print/T([0-9]+)/([0-9]+)$ __main/prcds/print.php?lg=$1&type=$2&id=$3&root=2[L]
+RewriteRule ^([a-z]{2})/Print4/T([0-9]+)/([0-9]+)$ __main/prcds/print4.php?lg=$1&type=$2&id=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/Print5/T([0-9]+)/([0-9]+)$ __main/prcds/print5.php?lg=$1&type=$2&id=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/Print6/T([0-9]+)/([0-9]+)$ __main/prcds/print6.php?lg=$1&type=$2&id=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/Print4/T([0-9]+)/([0-9]+)-([0-9]+)$ __main/prcds/print4.php?lg=$1&type=$2&id=$3&p=$4&root=2 [L]
+RewriteRule ^([a-z]{2})/Print/T([0-9]+)/([0-9]+)-([a-zA-Z0-9]+)$ __main/prcds/print.php?lg=$1&type=$2&id=$3&par=$4&root=2 [L]
+
+RewriteRule ^([a-z]{2})/Print-([a-z]{3})/([a-zA-Z0-9]+)/([0-9]+)-([0-9]+)$ _$2/prcds/print.php?lg=$1&type=$3&id=$4&id2=$5&root=2 [L]
+
+RewriteRule ^([a-z]{2})/Print-([a-z]{3})/([a-zA-Z0-9]+)/([0-9]+)$ _$2/prcds/print.php?lg=$1&type=$3&id=$4 [L]
+RewriteRule ^([a-z]{2})/Print-([a-z]{3})/([a-zA-Z0-9]+)$ _$2/prcds/print.php?lg=$1&type=$3 [L]
+#---Excel report-----------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/Excel-([a-z]{3})/([a-zA-Z0-9]+)/([0-9]+)-([0-9]+)$ _$2/prcds/excel.php?lg=$1&type=$3&id=$4&id2=$5&root=2 [L]
+RewriteRule ^([a-z]{2})/Excel-([a-z]{3})/([a-zA-Z0-9]+)/([0-9]+)$ _$2/prcds/excel.php?lg=$1&type=$3&id=$4 [L]
+RewriteRule ^([a-z]{2})/Excel-([a-z]{3})/([a-zA-Z0-9]+)$ _$2/prcds/excel.php?lg=$1&type=$3 [L]
+#---Print report-----------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/Report-([a-z]{3})$ _$2/prcds/reports.php?lg=$1&mood=1&root=2 [L]
+RewriteRule ^([a-z]{2})/Export-([a-z]{3})$ _$2/prcds/reports.php?lg=$1&mood=2&root=2 [L]
+
+#---Backup---------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/Backup$ _backup.php?lg=$1 [L]
+RewriteRule ^([a-z]{2})/Download-Backup/([0-9]+)$ __sys/prcds/d_backup.php?lg=$1&d=$2 [L]
+RewriteRule ^Auto-Backup$ gnr_auto_backup.php [L]
+#---Mod------------------------------------------------------------------------------
+RewriteRule ^([a-z]{2})/([a-zA-Z0-9-]+).([0-9]+)$ __sys/mods/mod.php?lg=$1&mod=$2&m_id=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/([a-zA-Z0-9-]+)$ __sys/mods/mod.php?lg=$1&mod=$2&root=2 [L]
+
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+)/A-([a-zA-Z0-9-]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&m_id2=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+)/B-([a-zA-Z0-9-]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&m_id3=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+)/C-([a-zA-Z0-9-]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&m_id4=$3&root=2 [L]
+
+
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&root=2 [L]
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+).([a-zA-Z0-9-]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&m_id=$3&root=2 [L]
+
+
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+).([0-9]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&m_id=$3&root=2 [L]
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+).([0-9]+).([0-9]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&m_id=$3&mod3=$4&root=2 [L]
+RewriteRule ^([a-z]{2})/_([a-zA-Z0-9-]+)$ __sys/mods/mod.php?lg=$1&mod2=$2&root=2 [L]
+RewriteRule ^([a-z]{2})/DownFile/([0-9]+).([a-z]+)$ __sys/prcds/download.php?lg=$1&d=$2&c=$3&root=2 [L]
+#------------------------------------------------------------------------------------
+RewriteRule ^sysJSv([a-zA-Z0-9-.]+).js$ __sys/funsJS.js [L]
+RewriteRule ^([a-z]{3})JSv([a-zA-Z0-9-.]+).js$ _$1/funsJS.js [L]
+RewriteRule ^Lg([a-z]{2})Mv([a-zA-Z0-9-.]+).js$ __main/lang/lang_k_$1.js [L]
+RewriteRule ^Lg([a-z]{2})Sv([a-zA-Z0-9-.]+).js$ __sys/lang/lang_k_$1.js [L]
+RewriteRule ^Lg([a-z]{2})Su([a-zA-Z0-9-.]+).js$ __super/lang/lang_k_$1.js [L]
+
+#-----System CSS
+RewriteRule ^sysCSS([0-9]+)lV([a-zA-Z0-9-.]+).css$ __sys/css/style_$1_ltr.css?root=2 [L]
+RewriteRule ^sysCSS([0-9]+)rV([a-zA-Z0-9-.]+).css$ __sys/css/style_$1_rtl.css?root=2 [L]
+
+RewriteRule ^sysCSSlV([a-zA-Z0-9-.]+)m.css$ __sys/css/style.php?d=ltr&root=2 [L]
+RewriteRule ^sysCSSrV([a-zA-Z0-9-.]+)m.css$ __sys/css/style.php?d=rtl&root=2 [L]
+
+RewriteRule ^PCSSlV([a-zA-Z0-9-.]+).css$ __sys/css/style_p.php?d=ltr&root=2 [L]
+RewriteRule ^PCSSrV([a-zA-Z0-9-.]+).css$ __sys/css/style_p.php?d=rtl&root=2 [L]
+
+#-----Super CSS
+RewriteRule ^sprCSS([0-9]+)lV([a-zA-Z0-9-.]+).css$ __super/css/style_$1_ltr.css?root=2 [L]
+RewriteRule ^sprCSS([0-9]+)rV([a-zA-Z0-9-.]+).css$ __super/css/style_$1_rtl.css?root=2 [L]
+
+RewriteRule ^sprCSS([a-zA-Z0-9-.]+)m.css$ __super/css/style.php?d=ltr&root=2 [L]
+RewriteRule ^sprCSS([a-zA-Z0-9-.]+)m.css$ __super/css/style.php?d=rtl&root=2 [L]
+
+#RewriteRule ^sprCSSlM.css$ __super/css/style.php?d=ltr&root=2 [L]
+#RewriteRule ^sprCSSrM.css$ __super/css/style.php?d=rtl&root=2 [L]
+
+#-----Programs CSS
+RewriteRule ^([a-z]{3})CSS([0-9]+)lV([a-zA-Z0-9-.]+).css$ _$1/css/style_$2_ltr.css?root=2 [L]
+RewriteRule ^([a-z]{3})CSS([0-9]+)rV([a-zA-Z0-9-.]+).css$ _$1/css/style_$2_rtl.css?root=2 [L]
+
+RewriteRule ^([a-z]{3})CSSlV([a-zA-Z0-9-.]+)m.css$ _$1/css/style.php?d=ltr&root=2 [L]
+RewriteRule ^([a-z]{3})CSSrV([a-zA-Z0-9-.]+)m.css$ _$1/css/style.php?d=rtl&root=2 [L]
+
+#-----Login CSS
+RewriteRule ^logCSSlM.css$ __sys/css/login.php?d=ltr&root=2 [L]
+RewriteRule ^logCSSrM.css$ __sys/css/login.php?d=rtl&root=2 [L]
+
+RewriteRule ^printCSSlM.css$ __sys/css/style_p.php?d=ltr&root=2 [L]
+RewriteRule ^printCSSrM.css$ __sys/css/style_p.php?d=rtl&root=2 [L]
+
+
+
+#---For this Project-----------------------------------------------------------------
+RewriteRule ^([a-z]{2})/DATA$ data.php?lg=$1 [L]
+RewriteRule ^([a-z]{2})/DATA/([^/]+)$ data.php?lg=$1&f=$2 [L]
+RewriteRule ^([a-z]{2})/DATA2/([^/]+)$ data.php?lg=$1&s=$2 [L]
+#---------------------------------------------------------------------
+RewriteRule ^addJSv_([a-zA-Z0-9-.]+).js$ addons/_funsJS.js [L]
+RewriteRule ^addJS([a-zA-Z0-9_]+)V([a-zA-Z0-9-.]+).js$ addons/$1/_funsJS.js [L]
+
+RewriteRule ^addCSSlv_([a-zA-Z0-9-.]+).css$ addons/css/_style.php?d=ltr&root=2 [L]
+RewriteRule ^addCSSrv_([a-zA-Z0-9-.]+).css$ addons/css/_style.php?d=rtl&root=2 [L]
+
+RewriteRule ^addCSSl([a-zA-Z0-9_]+)V([a-zA-Z0-9-.]+)M.css$ addons/$1/_style.php?d=ltr&root=2 [L]
+RewriteRule ^addCSSr([a-zA-Z0-9_]+)V([a-zA-Z0-9-.]+)M.css$ addons/$1/_style.php?d=rtl&root=2 [L]
+#--------------------------------------------------------------------------
+RewriteRule ^x$ _gnr/mods/x.php?root=2 [L]
+RewriteRule ^xx$ _gnr/mods/x.php?s=1&root=2 [L]
+RewriteRule ^x/([0-9]+)$ _gnr/mods/x.php?c=$1&root=2 [L]
+RewriteRule ^z$ _gnr/mods/z.php?root=2 [L]
+RewriteRule ^zz$ _gnr/mods/z.php?s=1&root=2 [L]
+
+RewriteRule ^([a-z]{2})/Print-R$ __main/prcds/print_r.php?lg=$1&root=2 [L]
+RewriteRule ^([a-z]{2})/Excel-Ex/([a-zA-Z0-9]+)$ _gnr/prcds/_report_ex.php?lg=$1&type=$2&root=2 [L]
+RewriteRule ^([a-z]{2})/Excel-Ex$ _gnr/prcds/_report_ex.php?lg=$1&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR_A/([0-9]+)$ __main/prcds/printLR.php?lg=$1&type=1&id=$2&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR_V/([0-9,a]+)$ __main/prcds/printLR.php?lg=$1&type=2&id=$2&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR_PDF/([0-9,a]+)$ __main/prcds/printLR.php?lg=$1&type=2&id=$2&pdf=1&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR_A/([0-9]+)-([0-9]+)$ __main/prcds/printLR.php?lg=$1&type=1&id=$2&par=$3&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR_V/([0-9]+)-([0-9,a]+)$ __main/prcds/printLR.php?lg=$1&type=2&id=$3&par=$4&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR_PDF/([0-9]+)-([0-9,a]+)$ __main/prcds/printLR.php?lg=$1&type=2&id=$3&par=$3&pdf=1&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR/V([0-9]+)-([a-z]+)$ __main/prcds/printLR.php?lg=$1&time=$2&code=$3&api=1&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLR/S([0-9]+)-([a-z]+)$ __main/prcds/printLR.php?lg=$1&time=$2&code=$3&api=2&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLab2/T([0-9]+)/([^/]+)$ __main/prcds/print_lab.php?lg=$1&type=$2&id=$3&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLab/T([0-9]+)/([0-9]+)$ __main/prcds/print_lab.php?lg=$1&type=$2&id=$3&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintLab/T([0-9]+)/([0-9]+)-([0-9]+)$ __main/prcds/print_lab.php?lg=$1&type=$2&id=$3&p=$4&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintC/T([0-9]+)/([0-9]+)$ __main/prcds/Cprint.php?lg=$1&type=$2&id=$3&root=2  [L]
+RewriteRule ^([a-z]{2})/PrintC/T([0-9]+)/([0-9]+)-([0-9]+)$ __main/prcds/Cprint.php?lg=$1&type=$2&id=$3&par=$4&root=2  [L]
+RewriteRule ^([a-z]{2})/Ticket/T([0-9]+)/([0-9]+)$ __main/prcds/print_ticket.php?lg=$1&type=$2&id=$3&root=2&root=2   [L]
+RewriteRule ^([a-z]{2})/Ticket/T([0-9]+)/([0-9]+)-([0-9]+)$ __main/prcds/print_ticket.php?lg=$1&type=$2&id=$3&par=$4&root=2 [L]
+RewriteRule ^([a-z]{2})/Ticket/T([0-9]+)/([0-9]+)-([0-9]+)-([a-z]+)$ __main/prcds/print_ticket.php?lg=$1&type=$2&id=$3&par=$4&x=$5&root=2  [L]
+RewriteRule ^([a-z]{2})/FixPage/T([0-9]+)/([0-9]+)$ __main/prcds/print_fixed.php?lg=$1&type=$2&id=$3&root=2  [L]
+RewriteRule ^([a-z]{2})/FixPage/T([0-9]+)/([0-9]+)-([0-9]+)$ __main/prcds/print_fixed.php?lg=$1&type=$2&id=$3&par=$4&root=2  [L]
+
+RewriteRule ^([a-z]{2})/Invoice/T([0-9]+)/([0-9]+)$ __main/prcds/print_invoice.php?lg=$1&type=$2&id=$3&root=2  [L]
+
+RewriteRule ^([a-z]{2})/Invoice/T([0-9]+)/([0-9]+)-([a-zA-Z0-9-]+)$ __main/prcds/print_invoice.php?lg=$1&type=$2&id=$3&par=$4&root=2  [L]
+
+RewriteRule ^Auto-Test-Senc$ lab_senc_tests.php [L]
+RewriteRule ^LabSnc$ _lab/prcds/senc.php?root=2 [L]
+
+RewriteRule ^Check-balance-([0-9]+)-([0-9]+)$ _lab/prcds/check_balance.php?vis=$1&pat=$2&root=2 [L]
+
+RewriteRule ^fixCln$ fix_cln.php [L]
+RewriteRule ^fixCln/([0-9]+)$ fix_cln.php?o=$1 [L]
+RewriteRule ^fixCln/([0-9]+)-([0-9]+)$ fix_cln.php?o=$1&n=$2 [L]
+
+#--------------------------------
+RewriteRule ^([a-z]{2})/Payments-Page/([a-z]{1})-([a-zA-Z0-9]+)$ _api/prcds/pay_win.php?lg=$1&opr=$2&code=$3&root=2&XFNone=1  [L]
+
+RewriteRule ^Daily-Alert$ _dts/prcds/daily_alert.php?root=2  [L]
+
+
+RewriteRule ^addons_r_style.php$ addons/_style.php?d=rtl
+RewriteRule ^addons_l_style.php$ addons/_style.php?d=ltr

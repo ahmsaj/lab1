@@ -1,0 +1,3 @@
+<?/***STR***/
+$userStore=getSubStorge($userSubType);
+?>

@@ -1,0 +1,124 @@
+<?/***GNR***/
+$clinicTypes=array('',k_clinics,k_thlab,k_txry,k_thdental,k_tbty,k_tlaser,k_endoscopy);
+$clinicTypesFull=array('',k_clinics,k_thlab,k_txry,k_thdental,k_tbty,k_tlaser,k_endoscopy,'','المواعيد',k_offers);
+$clinicCode=array('','cln','lab','xry','den','bty','bty','osc');
+$clinicTypesCol=array('','#85b24d','#ed475f','#009ad2','#99a','#dc6ed6','#d86bf7','#43D8AC');
+$reqStatusArr=array(k_in_wait,k_accepted,k_rejected);
+$payStatusArrRec=array(k_new_rec,k_isurance_rec_created,k_response_received);
+$payStatusArrRecClr=array('clr2','clr77','clr6');
+$insurStatusColArr=array('clr2','clr66','clr5');
+$srvTables=array('','cln_m_services','lab_m_services','xry_m_services','den_m_services','bty_m_services','bty_m_services','osc_m_services');
+$visXTables=array('','cln_x_visits','lab_x_visits','xry_x_visits','den_x_visits','bty_x_visits','bty_x_laser_visits','osc_x_visits');
+$srvXTables=array('','cln_x_visits_services','lab_x_visits_services','xry_x_visits_services','den_x_visits_services','bty_x_visits_services','bty_x_laser_visits_services','osc_x_visits_services');
+$subTablesOfeer=array('','gnr_m_clinics','lab_m_services_cats','gnr_m_clinics','den_m_services_cat','bty_m_services_cat','bty_m_services_cat','osc_m_services_cat');
+$subTablesOfeerCol=array('','clinic','cat','clinic','cat','cat','cat','cat');
+$denPrv='_Preview-Den';
+if(_set_7h5mip7t6n){$denPrv='_Preview-Den-new';}
+$prvPages=array('','_Preview-Clinic','','_Preview-Xray',$denPrv,'_Preview-Beauty','_Preview-Laser','_Preview-Osc');
+/************************************/
+$payTypeP=array('','نقدا','دفع الكتروني');
+$payTypePClr=array('','#f4370c','#944cbd');
+$payPatTypes=['0'=>k_dent_paym];
+if(intval(_set_1mwmyo2gel)){$payPatTypes[2]='إرجاع للمريض';}
+if(intval(_set_wm7ly3e9ox)){$payPatTypes[10]='رصيد سابق';}
+
+$docTimeStatus=array('',k_rst_stwork,k_rst_cln,k_cln_end,'');
+$docTimeStatusClr=array('',$clr6,$clr1,$clr5,'');
+$cLlinicDis=array('',_set_osced6538u,_set_fk9p1pamop,_set_z4084ro8wc,_set_96voskjo2,_set_jqqjli38k7);
+$subTablesOfferCol=array('','clinic','cat','clinic','cat','cat','cat','cat');
+$pay_types=array(k_normal,k_exemption,k_the_charity,'تأمين');
+$payment_text_arr=array(k_unpaid,k_paid);
+$vis_arr=array('',k_preview,k_review);
+$rev_type_arr=array(k_norm_rev,k_read_rec,k_sched_surg);
+$stats_arr=array(k_reservation_incomplete,k_endless_visit,k_the_visit_ended,k_visit_canceled);
+$stats_arr_col=array('#cccccc',$clr1,$clr6,$clr5);
+$ser_status_Tex=array(k_service_not_completed_yet,k_service_done,k_waiting_service_cost,k_canceled_service,k_serv_cancel_sent,k_postpaid_srv,k_imgs_sent_to_doc);
+$ser_status_color=array('#ffffff','#bbffbb','#fff498','#ffeeee','#eeeeee','#f8c8fe');
+$payArry=array('',k_receive_cost_visit,k_addt_val,k_return_all,k_return_part,k_renew_card,k_ontime_paym,k_postpaid_paym,k_prepaid_ret,k_prepaid,k_offer_paym);
+$payArry_col=array('',$clr6,$clr6,$clr5,$clr5,$clr6,$clr6,$clr6,$clr5,$clr1,$clr6);
+$sex_types=array(k_no_sel,k_male,k_female);
+$sex_types_ar=array('',k_male,k_female);
+$sex_mr=array('',k_mr,k_ms);
+$report_status_txt=array(k_report_not_enterd,k_report_enterd);
+$report_status_color=array($clr5,$clr6);	
+$sex_txt=array('',k_dr,k_dr_f);
+$sex_txt_tec=array('',k_technician,k_ftechnican);
+$sex_txt2=array('',k_specialst,k_fspecialst);
+$denVisType=array('غير محدد',k_treatment_session,k_consultation);
+$blockTime=$now-(86400*30);
+$patPayment=[0=>k_indpndnt_pay,1=>k_payment,2=>k_discrd,3=>k_charity,5=>k_exemption,4=>k_insurance,10=>'رصيد سابق'];
+$patPaymentClr=[0=>'clr6',1=>'clr6',2=>'clr5',3=>'clr1',4=>'clr6',10=>'clr8'];
+$docsGrp=array('7htoys03le','nlh8spit9q','fk590v9lvl','9yjlzayzp','66hd2fomwt','1ceddvqi3g','9k0a1zy2ww');
+$docsGrpStr="'".implode("','",$docsGrp)."'";
+$docsGrpMood=array('','7htoys03le','','nlh8spit9q','fk590v9lvl','9yjlzayzp','66hd2fomwt','9k0a1zy2ww');
+$GI_txt=array('-2','-1.5','-1','-0.5','0','+0.5','+1','+1.5','+2');
+$GI_clr=array('#ca006c','#f68026','#f1b310','#b6dba5','#377c2b','#80a3b7','#872175','#009edd','#994809');
+$rola_opr_txt=array(k_in_wait,k_reqrid_serv,k_wrkng,k_skpd,k_finished);
+$rola_opr_clr=array('#fff','#fed8b7','#c7e1ff','#fef8b2','#377c2b');
+
+$xTables=['_backup','_ex_col','_fav_list','_files','_files_i','_groups','_help','_help_details','_help_hints','_help_videos','_indexes','_information','_lang_keys','_lang_keys_sys','_langs','_lists_achieve','_log','_log_his','_log_opr','_maintenance','_modules','_modules_','_modules_butts','_modules_cons','_modules_files','_modules_files_pro','_modules_items','_modules_links','_modules_list','_p404','_perm','_programs','_q_time','_settings','_sys_alerts','_sys_alerts_items','_themes','_tp_temps','','',''];
+$merOprs=[
+	[k_api_alerts,'api_notifications','patient'],
+	[k_api_reg_devices,'api_notifications_push','patient'],
+	[k_lsr_visits,'bty_x_laser_visits','patient'],
+	[k_lsr_visits_srvcs,'bty_x_laser_visits_services','patient'],
+	[k_lsr_session_info,'bty_x_laser_visits_services_vals','patient'],
+	[k_bty_visits,'bty_x_visits','patient'],
+	[k_bty_visits_srvcs,'bty_x_visits_services','patient'],
+	// [k_pat_meds,'cln_x_medical_info','pationt_id'],
+	[k_unlinked_anlys_reqs,'cln_x_pro_analy','p_id'],
+	[k_referrals,'cln_x_pro_referral','p_id'],
+	[k_surgeries,'cln_x_pro_x_operations','p_id'],	
+	[k_clincal_examination,'cln_x_prev_cln','patient'],//---	
+	[k_complaints,'cln_x_prev_com','patient'],//---	
+	[k_diag,'cln_x_prev_dia','patient'],//---	
+	//[k_clinical_story,'cln_x_prv_story','patient'],//---	
+	//['ICD10','cln_x_prv_icd10','patient'],
+	//['ICPC','cln_x_prv_icpc','patient'],
+	[k_clinics_visits,'cln_x_visits','patient'],
+	[k_clinics_visits_srvcs,'cln_x_visits_services','patient'],
+	[k_vital_signs,'cln_x_vital','patient'],
+	[k_vital_indics_elems,'cln_x_vital_items','patient'],
+	[k_dental_proceds,'den_x_opr_teeth','patient'],
+	[k_teeth_status,'den_x_tooth_status','patient'],
+	[k_dental_visits,'den_x_visits','patient'],
+	[k_dental_proceds,'den_x_visits_services','patient'],
+	[k_proced_lvls,'den_x_visits_services_levels','patient'],
+	[k_dent_lvls_details,'den_x_visits_services_levels_w','patient'],
+	[k_appointments,'dts_x_dates','patient'],
+	[k_pat_payms,'gnr_x_acc_patient_payments','patient'],
+	[k_pat_insure_benefits,'gnr_x_insur_pay_back','patient'],
+	[k_insure_rec,'gnr_x_insurance_rec','patient'],
+	[k_offers,'gnr_x_offers','patient'],
+	[k_offers_items,'gnr_x_offers_items','patient'],
+	[k_offers_proceds,'gnr_x_offers_oprations','patient'],
+	[k_pat_to_offers,'gnr_x_offers_patient','patient'],
+	[k_trn,'gnr_x_roles','pat'],
+	[k_temp_proceds,'gnr_x_temp_oprs','patient'],
+	[k_pat_assess_of_visits,'gnr_x_visit_rate','patient'],
+	[k_visits_alerts,'gnr_x_visits_services_alert','patient'],
+	// [k_sent_test,'lab_x_receipt_items','patient'],
+	[k_test_templates,'lab_x_tmp_tests','pat'],
+	[k_lab_visits,'lab_x_visits','patient'],
+	[k_tests_reqs,'lab_x_visits_requested','patient'],
+	[k_test_reqs_items,'lab_x_visits_requested_items','patient'],		
+	[k_test_samples,'lab_x_visits_samlpes','patient'],
+	[k_lab_visits_srvcs,'lab_x_visits_services','patient'],
+	[k_tests_external,'lab_x_visits_services_outlabs','patient'],
+	[k_rad_imgs,'xry_x_pro_radiography','p_id'],
+	[k_Radiographs_report,'xry_x_pro_radiography_report','patient'],
+	[k_xray_visits,'xry_x_visits','patient'],	
+	[k_internal_img_req,'xry_x_visits_requested','patient'],
+	[k_xray_srvcs,'xry_x_visits_services','patient'],
+	//[k_pat_budget,'gnr_m_patients_balance','patient'],
+	[k_pat_docs,'gnr_x_patients_docs','patient'],
+	[k_lab_res,'lab_x_visits_services_results','patient'],
+	[k_med_data,'gnr_m_patients_medical_info','patient'],
+	[k_grow_indicators,'gnr_x_growth_indicators','patient'],
+	[k_osc_visits,'osc_x_visits','patient'],
+	[k_osc_srvcs,'osc_x_visits_services','patient'],
+	[k_med_data,'cln_x_medical_his','patient'],
+	[k_charities_recs,'gnr_x_charities_srv','patient'],
+	
+];
+?>

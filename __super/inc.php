@@ -1,0 +1,1 @@
+<? include('define.php');include('funs.php');?><script src="<?=$m_path?>__super/funs.js"></script>
